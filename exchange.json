@@ -1,0 +1,10 @@
+{
+  "main": "test-acb-1.raml",
+  "name": "test-acb-1",
+  "classifier": "raml",
+  "apiVersion": "v1",
+  "descriptorVersion": "1.0.0",
+  "groupId": null,
+  "assetId": "test-acb-1",
+  "version": "1.0.0"
+}

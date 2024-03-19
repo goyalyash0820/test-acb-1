@@ -1,0 +1,48 @@
+#%RAML 1.0
+title: test-acb-1
+version: v1
+
+traits:
+    client-id-enforcement:
+        headers:
+            clientId:
+                type: string
+                required: true
+            clientSecret:
+                type: string
+                required: true
+        responses:
+            401:
+              body:
+                application/json:
+                  properties:
+                    error:
+                      type: string
+                      description: A description of the error.
+                      example: Client Credentials Invalid
+                  example:
+                    {
+                      "error": "Client Credentials Invalid"
+                    }
+
+/accounts:
+    get:
+        is:
+            - client-id-enforcement
+        description: Get records
+        queryParameters:
+            accountId:
+                type: string
+                example: "ac12"
+                required: true
+        responses:
+            200:
+                body:
+                    application/json:
+                        example:
+                            {"id": "ac12", "name" : "ez"}
+            400:
+                body:
+                    application/json:
+                        example:
+                            {"message": "Not Provided"}
